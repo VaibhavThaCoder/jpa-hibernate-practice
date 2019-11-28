@@ -12,7 +12,8 @@ import org.springframework.stereotype.Repository;
 import com.in28minutes.database.databasedemo.entity.Person;
 
 @Repository
-@Transactional
+@Transactional // transaction managment ...all opertaion either successfull or all operations
+				// will fail together
 public class PersonJpaRepository {
 
 	// connect to the database
@@ -29,6 +30,11 @@ public class PersonJpaRepository {
 	}
 
 	public Person update(Person person) {
+		// be it insertion or updation we will use merge method to do these operation,
+		// merge() will check whether id has been generated for the row which is to be
+		// updated then it will try and update the row, if no id is set merge() will
+		// insert it automatically
+		//so there is no any difference between update and insert here
 		return entityManager.merge(person);
 	}
 
@@ -37,8 +43,8 @@ public class PersonJpaRepository {
 	}
 
 	public void deleteById(int id) {
-		Person person = findById(id);
-		entityManager.remove(person);
+		Person person = findById(id); //finding the perosn with id
+		entityManager.remove(person);  //remove() to delete
 	}
 
 }

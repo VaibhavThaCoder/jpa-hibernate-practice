@@ -22,7 +22,8 @@ public class PersonJbdcDao {
 	JdbcTemplate jdbcTemplate; // as we are using spring so no databse connectivity is used instead we use jdbc
 								// template to talk to our database
 
-	class PersonRowMapper implements RowMapper<Person> {
+	// creating custom row mapper by implements the RowMapper interface
+	class PersonRowMapper implements RowMapper<Person> {  
 		@Override
 		public Person mapRow(ResultSet rs, int rowNum) throws SQLException {
 			Person person = new Person();
@@ -35,16 +36,16 @@ public class PersonJbdcDao {
 
 	}
 
-//	public List<Person> findAll() {
-//		return jdbcTemplate.query("select * from person", new PersonRowMapper());
-//	}
-
 	public List<Person> findAll() {
-		// mapping all the fields in the person class to fields in the database for this
-		// there is an inbuilt row mapper associated with it i.e is
-		// BeanPropertyRowMapper()
-		return jdbcTemplate.query("select * from person", new BeanPropertyRowMapper<Person>(Person.class));
+		return jdbcTemplate.query("select * from person", new PersonRowMapper());
 	}
+
+//	public List<Person> findAll() {
+//		// mapping all the fields in the person class to fields in the database for this
+//		// there is an inbuilt row mapper associated with it i.e is
+//		// BeanPropertyRowMapper()
+//		return jdbcTemplate.query("select * from person", new BeanPropertyRowMapper<Person>(Person.class));
+//	}
 
 	public Person findById(int id) {
 
@@ -62,7 +63,7 @@ public class PersonJbdcDao {
 		// the tables and its contents so we use upf=date() on jdbcTemplate while
 		// insertion and deletion operation
 		//no need of mapper becuase we are deleting the row here  
-		// returns how many rows were affected by update() 
+		// returns how many rows were affected by update()  
 		return jdbcTemplate.update("delete from person where id=?", new Object[] { id });
 	}
 

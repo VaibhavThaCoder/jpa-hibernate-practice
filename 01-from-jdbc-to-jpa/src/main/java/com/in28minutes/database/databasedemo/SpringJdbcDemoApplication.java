@@ -12,7 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.in28minutes.database.databasedemo.entity.Person;
 import com.in28minutes.database.databasedemo.jdbc.PersonJbdcDao;
 
-@SpringBootApplication
+//@SpringBootApplication
 public class SpringJdbcDemoApplication implements CommandLineRunner {
 	// implementing the command line runner so that whenever the spring application
 	// starts the code within the run() will start its execution

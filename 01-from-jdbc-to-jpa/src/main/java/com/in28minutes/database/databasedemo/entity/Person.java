@@ -6,20 +6,25 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.Table;
 
 @Entity
-@NamedQuery(name="find_all_persons", query="select p from Person p")
+@NamedQuery(name = "find_all_persons", query = "select p from Person p")
+//@Table(name="person") 
+//no need of this,because hibernate provide default name for table i.e Person same thing for column as well no need of @Column(name="name")hibernate give filed name as a column names by defualt 
 public class Person {
 
-	@Id
-	@GeneratedValue
+	@Id //this indicates primary key of a table
+	@GeneratedValue //generating the values automatically
 	private int id;
 
 	private String name;
 	private String location;
 	private Date birthDate;
 
-	public Person() {
+	//as there is all argument constructor available so it is manadatory to have no argument constructor
+	//id will be generated using hibernate sequence
+	public Person() {  
 
 	}
 

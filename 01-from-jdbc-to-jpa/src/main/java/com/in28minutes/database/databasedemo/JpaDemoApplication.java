@@ -12,7 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import com.in28minutes.database.databasedemo.entity.Person;
 import com.in28minutes.database.databasedemo.jpa.PersonJpaRepository;
 
-//@SpringBootApplication
+@SpringBootApplication
 public class JpaDemoApplication implements CommandLineRunner {
 
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -29,7 +29,8 @@ public class JpaDemoApplication implements CommandLineRunner {
 		
 		logger.info("User id 10001 -> {}", repository.findById(10001));
 		
-		logger.info("Inserting -> {}", 
+		// the best way for insertion is not to pass an id
+		logger.info("Inserting -> {}",  
 				repository.insert(new Person("Tara", "Berlin", new Date())));
 		
 		logger.info("Update 10003 -> {}", 
