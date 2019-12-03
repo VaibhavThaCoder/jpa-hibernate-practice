@@ -25,20 +25,16 @@ import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@NamedQueries(value = { 
-		@NamedQuery(name = "query_get_all_courses", 
-				query = "Select  c  From Course c"),		
-		@NamedQuery(name = "query_get_all_courses_join_fetch", 
-		query = "Select  c  From Course c JOIN FETCH c.students s"),		
-		@NamedQuery(name = "query_get_100_Step_courses", 
-		query = "Select  c  From Course c where name like '%100 Steps'") })
+@NamedQueries(value = { @NamedQuery(name = "query_get_all_courses", query = "Select  c  From Course c"),
+		@NamedQuery(name = "query_get_all_courses_join_fetch", query = "Select  c  From Course c JOIN FETCH c.students s"),
+		@NamedQuery(name = "query_get_100_Step_courses", query = "Select  c  From Course c where name like '%100 Steps'") })
 @Cacheable
-@SQLDelete(sql="update course set is_deleted=true where id=?")
-@Where(clause="is_deleted = false")
+@SQLDelete(sql = "update course set is_deleted=true where id=?")
+@Where(clause = "is_deleted = false")
 public class Course {
 
 	private static Logger LOGGER = LoggerFactory.getLogger(Course.class);
-	
+
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -46,23 +42,23 @@ public class Course {
 	@Column(nullable = false)
 	private String name;
 
-	@OneToMany(mappedBy="course")
+	@OneToMany(mappedBy = "course")
 	private List<Review> reviews = new ArrayList<>();
-	
-	@ManyToMany(mappedBy="courses")
+
+	@ManyToMany(mappedBy = "courses")
 	@JsonIgnore
 	private List<Student> students = new ArrayList<>();
-	
+
 	@UpdateTimestamp
 	private LocalDateTime lastUpdatedDate;
 
 	@CreationTimestamp
 	private LocalDateTime createdDate;
-	
+
 	private boolean isDeleted;
-	
+
 	@PreRemove
-	private void preRemove(){
+	private void preRemove() {
 		LOGGER.info("Setting isDeleted to True");
 		this.isDeleted = true;
 	}
@@ -82,7 +78,6 @@ public class Course {
 		this.name = name;
 	}
 
-	
 	public List<Review> getReviews() {
 		return reviews;
 	}
@@ -107,7 +102,8 @@ public class Course {
 		return id;
 	}
 
-	@Override
+	@Override // for printing only the name of the course only name parameter is used in
+				// toString() method
 	public String toString() {
 		return String.format("Course[%s]", name);
 	}
