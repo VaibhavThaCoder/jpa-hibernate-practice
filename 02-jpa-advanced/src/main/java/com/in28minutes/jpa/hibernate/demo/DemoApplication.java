@@ -33,13 +33,14 @@ public class DemoApplication implements CommandLineRunner {
 	@Override
 	public void run(String... arg0) throws Exception {
 
-		Course course = courseRepository.findById(10001L);
-		logger.info("course 1001 -->{}", course);
+//		Course course = courseRepository.findById(10001L);
+//		logger.info("course 1001 -->{}", course);
+//		courseRepository.save(new Course("microservices in 200 steps"));
 
 		// courseRepository.deleteById(10001L);
 
 		// studentRepository.saveStudentWithPassport();
-		// repository.playWithEntityManager();
+		courseRepository.playWithEntityManager();
 		// courseRepository.addHardcodedReviewsForCourse();
 		// List<Review> reviews = new ArrayList<>();
 
