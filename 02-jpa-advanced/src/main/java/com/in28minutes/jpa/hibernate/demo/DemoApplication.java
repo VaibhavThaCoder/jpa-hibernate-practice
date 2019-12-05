@@ -33,20 +33,27 @@ public class DemoApplication implements CommandLineRunner {
 	@Override
 	public void run(String... arg0) throws Exception {
 
-//		Course course = courseRepository.findById(10001L);
-//		logger.info("course 1001 -->{}", course);
-//		courseRepository.save(new Course("microservices in 200 steps"));
+		Course course = courseRepository.findById(10001L);
+		logger.info("course 1001 -->{}", course);
+		courseRepository.save(new Course("microservices in 200 steps"));
 
 		// courseRepository.deleteById(10001L);
 
 		// studentRepository.saveStudentWithPassport();
-		courseRepository.playWithEntityManager();
+		
+		
+		//kindly comment thid method while executing JPQLTest.java and NativeQueriesTest.java
+
+		//courseRepository.playWithEntityManager();
+		
+		
+		
 		// courseRepository.addHardcodedReviewsForCourse();
 		// List<Review> reviews = new ArrayList<>();
 
 		// reviews.add(new Review("5", "Great Hands-on Stuff."));
 		// reviews.add(new Review("5", "Hatsoff."));
-
+ 
 		// courseRepository.addReviewsForCourse(10003L, reviews );
 		// studentRepository.insertHardcodedStudentAndCourse();
 		// studentRepository.insertStudentAndCourse(new Student("Jack"),

@@ -32,7 +32,9 @@ public class NativeQueriesTest {
 		Query query = em.createNativeQuery("SELECT * FROM COURSE", Course.class);
 		List resultList = query.getResultList();
 		logger.info("SELECT * FROM COURSE  -> {}", resultList);
-		//SELECT * FROM COURSE  -> [Course[Web Services in 100 Steps], Course[JPA in 50 Steps - Updated], Course[Spring in 50 Steps], Course[Spring Boot in 100 Steps]]
+		// SELECT * FROM COURSE -> [Course[Web Services in 100 Steps], Course[JPA in 50
+		// Steps - Updated], Course[Spring in 50 Steps], Course[Spring Boot in 100
+		// Steps]]
 	}
 
 	@Test
@@ -41,26 +43,31 @@ public class NativeQueriesTest {
 		query.setParameter(1, 10001L);
 		List resultList = query.getResultList();
 		logger.info("SELECT * FROM COURSE  where id = ? -> {}", resultList);
-		//[Course[JPA in 50 Steps - Updated]]
+		// [Course[JPA in 50 Steps - Updated]]
 	}
 
 	@Test
 	public void native_queries_with_named_parameter() {
-		Query query = em.createNativeQuery("SELECT * FROM COURSE where id = :id", Course.class);
+		Query query = em.createNativeQuery("SELECT * FROM COURSE where id = :id", Course.class); // id is a named
+																									// parameter rather
+																									// using the
+																									// positional
+																									// parameter
 		query.setParameter("id", 10001L);
 		List resultList = query.getResultList();
 		logger.info("SELECT * FROM COURSE  where id = :id -> {}", resultList);
-		//[Course[JPA in 50 Steps - Updated]]
+		// [Course[JPA in 50 Steps - Updated]]
 	}
-	
+
 	@Test
-	@Transactional
+	@Transactional //mandatory it is required @Transactional annotations for update
 	public void native_queries_to_update() {
 		Query query = em.createNativeQuery("Update COURSE set last_updated_date=sysdate()");
 		int noOfRowsUpdated = query.executeUpdate();
 		logger.info("noOfRowsUpdated  -> {}", noOfRowsUpdated);
-		//SELECT * FROM COURSE  -> [Course[Web Services in 100 Steps], Course[JPA in 50 Steps - Updated], Course[Spring in 50 Steps], Course[Spring Boot in 100 Steps]]
+		// SELECT * FROM COURSE -> [Course[Web Services in 100 Steps], Course[JPA in 50
+		// Steps - Updated], Course[Spring in 50 Steps], Course[Spring Boot in 100
+		// Steps]]
 	}
-
 
 }

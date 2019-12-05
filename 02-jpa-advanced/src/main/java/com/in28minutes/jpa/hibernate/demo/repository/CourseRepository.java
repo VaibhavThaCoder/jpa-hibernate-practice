@@ -48,34 +48,39 @@ public class CourseRepository {
 	public void playWithEntityManager() {
 		Course course1 = new Course("Web Services in 100 Steps");
 		em.persist(course1);
-		em.flush(); // sends the changes to database to save
-		// em.detach(course1); //the changes to course 1 are not tracked by entity
-		// manager
-
-		// em.flush();
-
-		em.clear(); // it clears all the unsaved/not flushed changes from the database
-
-		Course course2 = findById(10001L);
-
-		// as we are in @Transactional annotation so even though we have not called the
-		// merge() to update the course but still update happens this because Entity
-		// Manager keeps the track of all the operations and @Transactional saves all
-		// the operation related to entity manager by default therefore no need of
-		// em.merge(course)
-
+//		em.flush(); // sends the changes to database to save
+//		// em.detach(course1); //the changes to course 1 are not tracked by entity
+//		// manager
+//
+//		// em.flush();
+//
+//		em.clear(); // it clears all the unsaved/not flushed changes from the database
+//
+	Course course2 = findById(10001L);
+//
+//		// as we are in @Transactional annotation so even though we have not called the
+//		// merge() to update the course but still update happens this because Entity
+//		// Manager keeps the track of all the operations and @Transactional saves all
+//		// the operation related to entity manager by default therefore no need of
+//		// em.merge(course)
+//
 		course2.setName("JPA in 50 Steps - Updated");
-		em.persist(course2);
-		em.flush();
-		// em.detach(course2); //the changes to course 2 are not tracked by entity
-		// manager
-		course1.setName("Web Services in 100 Steps - updated");
-		course2.setName("angular js in 100 Steps - updated"); // these changes are not reflected
+//		em.persist(course2);
+//		em.flush();
+//		// em.detach(course2); //the changes to course 2 are not tracked by entity
+//		// manager
+//		course1.setName("Web Services in 100 Steps - updated");
+//		course2.setName("angular js in 100 Steps - updated"); // these changes are not reflected
+//
+//		em.refresh(course1); // course1 updated contents will not be saved as it refreshed so evnthough
+//								// em.flush() is invoked the current course1 changes whicj=h are refresh wont be
+//								// saved
 
-		em.refresh(course1); // course1 updated contents will not be saved as it refreshed so evnthough
-								// em.flush() is invoked the current course1 changes whicj=h are refresh wont be
-								// saved
-		em.flush();
+//		Course course1 = new Course("Web Services in 100 Steps");
+//		course1.setName(null); // this will give you error because nullable=false is set in @column()
+//								// annotation for the field name in course
+//		em.persist(course1);
+//		em.flush();
 
 	}
 

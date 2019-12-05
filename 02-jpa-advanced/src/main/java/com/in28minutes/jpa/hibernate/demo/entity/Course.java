@@ -49,11 +49,18 @@ public class Course {
 	@JsonIgnore
 	private List<Student> students = new ArrayList<>();
 
-	@UpdateTimestamp
-	private LocalDateTime lastUpdatedDate;
+	@UpdateTimestamp // any changes made to the Course entity the date and time will be recorded at
+						// that time and stored using @UpdateTimestamp annotation comes into play after
+						// updation
+	private LocalDateTime lastUpdatedDate; // for storing the local date and time we have used the type
+											// as="LocalDateTime"
 
-	@CreationTimestamp
-	private LocalDateTime createdDate;
+	@CreationTimestamp // whenever we create a row in course entity the date and time will be recorded
+						// at
+	// that time and stored using @CreationTimestamp annotation comes into picture
+	// when created i.e after persist() method on entity manager
+	private LocalDateTime createdDate; // for storing the local date and time we have used the type
+	// as="LocalDateTime"
 
 	private boolean isDeleted;
 
