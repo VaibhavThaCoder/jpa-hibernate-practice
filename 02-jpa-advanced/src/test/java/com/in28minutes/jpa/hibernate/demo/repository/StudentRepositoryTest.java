@@ -43,7 +43,13 @@ public class StudentRepositoryTest {
 	public void retrieveStudentAndPassportDetails() {
 		Student student = em.find(Student.class, 20001L);
 		logger.info("student -> {}", student);
-		logger.info("passport -> {}", student.getPassport());
+
+		// the @Transactional is important because Entity manager em will end the
+		// hibernate session with database AFTER IT EXECUTES FIND() so to avoid this we use
+		// transactional annotations
+		logger.info("passport -> {}", student.getPassport()); // BECUASE FETCH TYPE= LAZY SO WE EXPLICIYLY CALLEWD THE
+																// GETTER RELATED TO PASSPORT
+
 	}
 
 	@Test
@@ -61,12 +67,12 @@ public class StudentRepositoryTest {
 		logger.info("passport -> {}", passport);
 		logger.info("student -> {}", passport.getStudent());
 	}
-	
+
 	@Test
 	@Transactional
 	public void retrieveStudentAndCourses() {
 		Student student = em.find(Student.class, 20001L);
-		
+
 		logger.info("student -> {}", student);
 		logger.info("courses -> {}", student.getCourses());
 	}

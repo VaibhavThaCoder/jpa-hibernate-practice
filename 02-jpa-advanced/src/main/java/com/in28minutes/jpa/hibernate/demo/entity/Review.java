@@ -26,7 +26,8 @@ public class Review {
 	}
 
 	public Review(ReviewRating rating, String description) {
-		this.rating = rating;
+		this.rating = rating; // whenever we created review it should be created with rating and description
+								// together at same time
 		this.description = description;
 	}
 

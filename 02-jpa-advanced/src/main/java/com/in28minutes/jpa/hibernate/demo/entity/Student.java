@@ -28,8 +28,8 @@ public class Student {
 	private Address address;
 
 	@OneToOne(fetch = FetchType.LAZY)
-	private Passport passport;
-
+	private Passport passport;  //STUDENT ENTITY OWNS PASSPORT 
+ 
 	@ManyToMany
 	@JoinTable(name = "STUDENT_COURSE", joinColumns = @JoinColumn(name = "STUDENT_ID"), inverseJoinColumns = @JoinColumn(name = "COURSE_ID"))
 	private List<Course> courses = new ArrayList<>();

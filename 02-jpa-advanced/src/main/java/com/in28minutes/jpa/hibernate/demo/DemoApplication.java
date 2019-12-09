@@ -1,4 +1,4 @@
-package com.in28minutes.jpa.hibernate.demo;
+ package com.in28minutes.jpa.hibernate.demo;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,7 +39,7 @@ public class DemoApplication implements CommandLineRunner {
 
 		// courseRepository.deleteById(10001L);
 
-		// studentRepository.saveStudentWithPassport();
+		 studentRepository.saveStudentWithPassport();
 		
 		
 		//kindly comment thid method while executing JPQLTest.java and NativeQueriesTest.java
