@@ -101,6 +101,8 @@ public class CourseRepository {
 		review2.setCourse(course);
 
 		// save it to the database
+		
+		//saving the owning entity only i.e review 
 		em.persist(review1);
 		em.persist(review2);
 	}

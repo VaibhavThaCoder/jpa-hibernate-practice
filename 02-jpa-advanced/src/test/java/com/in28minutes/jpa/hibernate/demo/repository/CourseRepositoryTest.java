@@ -100,12 +100,12 @@ public class CourseRepositoryTest {
 //		logger.info("{}", course.getReviews());
 //	}
 //
-//	@Test
-//	@Transactional
-//	public void retrieveCourseForReview() {
-//		Review review = em.find(Review.class, 50001L);
-//		logger.info("{}", review.getCourse());
-//	}
+	@Test
+	@Transactional
+	public void retrieveCourseForReview() {
+		Review review = em.find(Review.class, 50001L);
+		logger.info("{}", review.getCourse());
+	}
 //
 //	@Test
 //	@Transactional
