@@ -30,7 +30,7 @@ public class Student {
 	@OneToOne(fetch = FetchType.LAZY)
 	private Passport passport;  //STUDENT ENTITY OWNS PASSPORT 
  
-	@ManyToMany
+	@ManyToMany  //customizing the join column
 	@JoinTable(name = "STUDENT_COURSE", joinColumns = @JoinColumn(name = "STUDENT_ID"), inverseJoinColumns = @JoinColumn(name = "COURSE_ID"))
 	private List<Course> courses = new ArrayList<>();
 
