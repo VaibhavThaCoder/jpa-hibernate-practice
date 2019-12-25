@@ -11,7 +11,7 @@ public class PartTimeEmployee extends Employee {
 	}
 
 	public PartTimeEmployee(String name, BigDecimal hourlyWage) {
-		super(name);
+		super(name); //refers to super class's(Employee) name attribute
 		this.hourlyWage = hourlyWage;
 	}
 

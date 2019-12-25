@@ -111,9 +111,12 @@ public class JPQLTest {
 	@Test
 	public void join() {
 		Query query = em.createQuery("Select c, s from Course c JOIN c.students s");
+		// result is in the form of array of objects in joins so typed query is not used
 		List<Object[]> resultList = query.getResultList();
 		logger.info("Results Size -> {}", resultList.size());
 		for (Object[] result : resultList) {
+			//result[0]=course
+			//result[1]=Student
 			logger.info("Course{} Student{}", result[0], result[1]);
 		}
 	}
