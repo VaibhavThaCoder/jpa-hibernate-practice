@@ -110,7 +110,7 @@ public class Course {
 	}
 
 	@Override // for printing only the name of the course only name parameter is used in
-				// toString() method
+				// toString() method be cautious while inserting some thing toString method
 	public String toString() {
 		return String.format("Course[%s]", name);
 	}
